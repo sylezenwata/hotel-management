@@ -1,0 +1,85 @@
+/* booking filter */
+#bookingFilter .box {
+    width: 350px;
+    /* border-radius: 25px; */
+    overflow: hidden;
+    padding: 5px 15px;
+    border: none;
+    background-color: transparent;
+}
+#bookingFilter input.form-input {
+    background-color: transparent;
+}
+#bookingFilterForm button[type=submit] {
+    padding: 2px;
+    height: 30px;
+    width: 30px;
+    display: none;
+}
+#bookingFilter .box:focus-within button[type=submit] {
+    display: unset;
+}
+/* bookings container */
+#bookingContainer {
+    position: relative;
+}
+.sch-item__wrap {
+    position: relative;
+    width: calc(100%/3);
+    transition: top .5s ease;
+    padding: 10px;
+    user-select: none;
+}
+.sch-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background-color: var(--light-bg-color);
+    height: 100%;
+}
+.sch-item:hover {
+    top: -5px;
+    box-shadow: var(--sec-bx-s);
+}
+.sch-item__head,
+.sch-item__body {
+    padding: 0 0 15px 0;
+    position: relative;
+}
+.sch-item__head .btn {
+    background: transparent;
+    border-radius: 50%;
+    padding: 2px;
+    height: 25px;
+    width: 25px;
+    box-shadow: none;
+}
+.sch-item__head .icon svg {
+    stroke-width: 2;
+}
+.sch-item__head .status {
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+.sch-item__foot {
+    border-top: 1px solid var(--border-color);
+}
+
+/* booking modal */
+#newBookingModal.modal {
+    display: none;
+}
+@media (max-width: 835px) {
+    .sch-item__wrap {
+        width: 50%;
+    }
+}
+@media (max-width: 620px) {
+    .sch-item__wrap {
+        width: 100%;
+    }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>My Bookings | Novotel</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/assets/favicons/site.webmanifest">
+		<meta name="theme-color" content="#202962">
+        <link rel="stylesheet" href="/static/my_booking.chunk.css" />
+        <link rel="stylesheet" href="/assets/css/res.css" />
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"> -->
+		<noscript>
+			<div class="no-script">
+				<p>
+					You appear to be using an outdated browser, or javascript is
+					disabled in your browser. Please upgrade to a modern browser or
+					enable javascript and refresh page.
+				</p>
+			</div>
+		</noscript>
+	</head>
+	<body>
+		<div class="content">
+			<%- include('./partials/nav.ejs'); %>
+			<%- include('./partials/sidebar.ejs'); %>
+			<section id="main-con">
+				<div class="main-con__wrap flex flex-col p-lr-10">
+					<div class="main-con__head"></div>
+					<div class="main-con__content position-r">
+						<div id="bookingFilter" class="box-hol align-c justify-e" style="padding: 5px 10px;">
+							<div class="box b-rad-5" style="margin-top: 5px; padding: 5px 0;">
+								<form id="bookingFilterForm" action="/bookings/filter" method="GET" class="flex align-c justify-c">
+									<input type="text" name="q" class="form-input" style="border: none; font-size: 14px; height: 30px; padding-left: 0;" placeholder="Filter by refrence number or location or from or to date" autocomplete="off" required>
+									<button type="submit" class="btn primary icon stroke-light">
+										<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+											<circle cx="10" cy="10" r="7" />
+											<line x1="21" y1="21" x2="15" y2="15" />
+										</svg>
+									</button>
+								</form>
+							</div>
+						</div>
+						<hr style="margin: 10px; border: 0; border-top: 1px solid var(--border-color);"/>
+						<div class="flex flex-col">
+							<div id="bookingContainer" class="flex flex-flow p-tb-20">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script src="/static/my_booking.chunk.js"></script>
+	</body>
+</html>

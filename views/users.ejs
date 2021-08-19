@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Users | Novotel</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/assets/favicons/site.webmanifest">
+		<meta name="theme-color" content="#202962">
+        <link rel="stylesheet" href="/static/users.chunk.css" />
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"> -->
+		<noscript>
+			<div class="no-script">
+				<p>
+					You appear to be using an outdated browser, or javascript is
+					disabled in your browser. Please upgrade to a modern browser or
+					enable javascript and refresh page.
+				</p>
+			</div>
+		</noscript>
+	</head>
+	<body>
+		<div class="content">
+			<%- include('./partials/nav.ejs'); %>
+			<%- include('./partials/sidebar.ejs'); %>
+			<section id="main-con">
+				<div class="main-con__wrap flex flex-col p-lr-10">
+					<div class="main-con__head"></div>
+					<div class="main-con__content position-r">
+						<div class="box-hol w-100">
+							<div class="box b-rad-5">
+								<div class="flex align-c justify-b flex-wrap p-lr-20 p-tb-10">
+									<h1 class="text-cap text-c f-20">Users</h1>
+									<div class="flex align-c flex-wrap">
+										<form id="searchUsers" action="/users/search" method="GET" class="m-r-10 m-t-5">
+											<div class="input-wrap" style="margin: 0;">
+												<div class="form-input__wrap">
+													<label class="form-input__label">
+														<input type="search" class="form-input" name="q" title="Search by name or email" placeholder="Search by Name or Email" style="height: unset; padding: 10px 15px; border-radius: 35px; font-size: 14px;" autocomplete="off">
+													</label>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="p-lr-20 p-tb-10">
+									<div class="table-wrap table-striped table-responsive custom-scroll" style="margin-top: 0;">
+										<table class="table" id="usersList" data-last="0" data-number="0" data-limit="100">
+											<thead>
+												<tr>
+													<th>No.</th>
+													<th>First Name</th>
+													<th>Last Name</th>
+													<th>Email</th>
+													<th>DOB</th>
+													<th>Gender</th>
+													<th>Date</th>
+													<th>Status</th>
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script src="/static/users.chunk.js"></script>
+	</body>
+</html>

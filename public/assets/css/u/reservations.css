@@ -1,0 +1,31 @@
+#newReservationModal.modal {
+    display: none;
+}
+button#newReservation {
+    padding: 5px;
+}
+button#newReservation.icon {
+    height: 35px;
+    width: 35px;
+}
+form#searchReservation input.form-input {
+    width: 250px;
+}
+#reservationsList tbody tr.r-item .status {
+    background-color: var(--error-color);
+    font-weight: 600;
+}
+#reservationsList tbody tr.r-item.r-item__active .status {
+    background-color: var(--success-color);
+}
+#reservationsList tbody tr.r-item.r-item__active button[data-status] svg.enable {
+    display: none;
+}
+#reservationsList tbody tr.r-item.r-item__inactive button[data-status] svg.disable {
+    display: none;
+}
+@media (max-width: 320px) {
+    form#searchReservation input.form-input {
+        width: 100%;
+    }
+}

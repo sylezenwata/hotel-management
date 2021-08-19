@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Novotel: Lets help you make a good reservation at the best price</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/assets/favicons/site.webmanifest">
+		<meta name="theme-color" content="#202962">
+        <link rel="stylesheet" href="/static/home.chunk.css" />
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"> -->
+		<noscript>
+			<div class="no-script">
+				<p>
+					You appear to be using an outdated browser, or javascript is
+					disabled in your browser. Please upgrade to a modern browser or
+					enable javascript and refresh page.
+				</p>
+			</div>
+		</noscript>
+	</head>
+	<body>
+        <div class="content">
+            <header class="header position-r">
+				<nav class="nav-bar">
+					<div class="nav-bar__content doc-width flex align-c justify-b">
+						<div class="logo">
+							<img src="/assets/media/images/novotel_logo_small.png" height="60" width="60" alt="Logo">
+						</div>
+						<div class="btn-wrap">
+							<a href="<%=userData !== null ? '/myBooking' : '/login'%>" class="btn default flex align-c" style="border-radius: 25px;">
+								<img src="/assets/media/icons/avatar_scheme.svg" height="25" width="25" alt="User">
+								<span class="text-color f-16 m-l-5 text-cap">
+									<%=userData !== null ? 'account' : 'login'%>
+								</span>
+							</a>
+						</div>
+					</div>
+				</nav>
+				<div class="hero tint" style="background-image: url('/assets/media/images/novotel_bg2.jpg');">
+					<div class="hero__content doc-width">
+						<img src="/assets/media/images/novotel_logo.png" alt="Novotel Brand">
+						<h1 class="m-t-10 f-30 text-color text-c">Find the right reservation in the coolest city</h1>
+						<!-- <div class="btn-wrap">
+							<button class="btn default f-16 text-cap">Get Started</button>
+						</div> -->
+					</div>
+				</div>
+			</header>
+			<section class="reservation position-r">
+				<div class="reservation__content doc-width">
+					<div id="reservationFilter">
+						<form id="reservationFilterForm" action="/reservations/filter" method="GET">
+							<div class="reservation__filter flex align-b">
+								<div class="input-wrap">
+									<div class="form-input__wrap">
+										<label class="form-input__label">
+											<span>Location</span>
+											<input type="text" class="form-input" name="location" placeholder="Reservation location"/>
+										</label>
+									</div>
+								</div>
+								<div class="input-wrap">
+									<div class="form-input__wrap flex align-c">
+										<label class="form-input__label">
+											<span>From</span>
+											<input type="date" class="form-input" name="from_date" placeholder="Reservation date range"/>
+										</label>
+									</div>
+								</div>
+								<div class="input-wrap">
+									<div class="form-input__wrap flex align-c">
+										<label class="form-input__label">
+											<span>To</span>
+											<input type="date" class="form-input" name="to_date" placeholder="Reservation date range"/>
+										</label>
+									</div>
+								</div>
+								<div class="btn-wrap">
+									<button class="btn primary">Find</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div id="reservationContainer" class="flex flex-flow">
+					</div>
+				</div>
+			</section>
+			<footer class="footer flex align-c">
+				<div class="footer__content doc-width flex flex-wrap justify-b align-c">
+					<ul class="flex align-c">
+						<li class="p-tb-5">
+							<a href="#about">About Us</a>
+						</li>
+						<li class="m-l-10 p-5">
+							<a href="#policyTerms">Policy & Terms</a>
+						</li>
+						<li class="m-l-10 p-tb-5">
+							<a href="#contact">Contact</a>
+						</li>
+					</ul>
+                    <p class="m-l-10 text-sec-color p-tb-5">&copy; 2020, Novotel Hotels.</p>
+				</div>
+			</footer>
+        </div>
+		<script src="/static/home.chunk.js"></script>
+	</body>
+</html>

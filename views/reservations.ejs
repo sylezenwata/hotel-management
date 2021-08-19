@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Reservations | Novotel</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/assets/favicons/site.webmanifest">
+		<meta name="theme-color" content="#202962">
+        <link rel="stylesheet" href="/static/reservations.chunk.css" />
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"> -->
+		<noscript>
+			<div class="no-script">
+				<p>
+					You appear to be using an outdated browser, or javascript is
+					disabled in your browser. Please upgrade to a modern browser or
+					enable javascript and refresh page.
+				</p>
+			</div>
+		</noscript>
+	</head>
+	<body>
+		<div class="content">
+			<%- include('./partials/nav.ejs'); %>
+			<%- include('./partials/sidebar.ejs'); %>
+			<section id="main-con">
+				<div class="main-con__wrap flex flex-col p-lr-10">
+					<div class="main-con__head"></div>
+					<div class="main-con__content position-r">
+						<div class="box-hol w-100">
+							<div class="box b-rad-5">
+								<div class="flex align-c justify-b flex-wrap p-lr-20 p-tb-10">
+									<h1 class="text-cap text-c f-20">Reservations</h1>
+									<div class="flex align-c flex-wrap">
+										<form id="searchReservations" action="/reservations/filter" method="GET" class="m-r-10 m-t-5">
+											<div class="input-wrap" style="margin: 0;">
+												<div class="form-input__wrap">
+													<label class="form-input__label">
+														<input type="search" class="form-input" name="location" title="Search by title or location" placeholder="Search by title or location" style="height: unset; padding: 10px 15px; border-radius: 35px; font-size: 14px;" autocomplete="off">
+													</label>
+												</div>
+											</div>
+										</form>
+										<button title="New Reservation" id="newReservation" class="btn primary m-t-5 icon stroke-light">
+											<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+												<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+												<line x1="12" y1="5" x2="12" y2="19" />
+												<line x1="5" y1="12" x2="19" y2="12" />
+											</svg>
+										</button>
+									</div>
+								</div>
+								<div class="p-lr-20 p-tb-10">
+									<div class="table-wrap table-striped table-responsive custom-scroll" style="margin-top: 0;">
+										<table class="table" id="reservationsList" data-last="0" data-number="0" data-limit="100">
+											<thead>
+												<tr>
+													<th>No.</th>
+													<th>ID</th>
+													<th>Title</th>
+													<th>Location</th>
+													<th>Cost</th>
+													<th>Rating</th>
+													<th>From</th>
+													<th>To</th>
+													<th>Description</th>
+													<th>Date</th>
+													<th>Status</th>
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div id="newReservationModal" class="modal dark">
+				<div class="modal-content b-rad-5 b-s-high">
+					<form id="newReservationForm" action="/reservations/new" method="POST" enctype="multipart/form-data">
+						<div class="modal-head flex justify-b">
+							<h1 class="flex flex-col justify-c f-14">New Reservation</h1>
+							<div class="flex align-c">
+								<div class="btn-wrap" style="margin: 0 10px 0 0;">
+									<button type="submit" class="btn primary flex align-c head__foot__btn" disabled>
+										<span class="p-lr-5">Create</span>
+									</button>
+								</div>
+								<button type="button" id="closeNewReservation" class="icon stroke" title="Close" style="width: 25px; height: 25px; background-color: transparent; border: none">
+									<svg xmlns="http://www.w3.org/2000/svg" style="stroke-width: 2.0;" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+										<line x1="18" y1="6" x2="6" y2="18" />
+										<line x1="6" y1="6" x2="18" y2="18" />
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div class="modal-body custom-scroll">
+							<div class="modal-body__content flex justify-c">
+								<div class="form-body">
+									<div class="input-wrap">
+										<div class="form-input__wrap">
+											<label class="form-input__label" data-required="true">
+												<span class="f-12 f-w-6">Reservation images</span>
+												<input type="file" accept="image/*" multiple class="form-input" name="reservation_images" required/>
+											</label>
+										</div>
+									</div>
+									<div class="input-group-wrap">
+										<div class="input-wrap">
+											<div class="form-input__wrap">
+												<label class="form-input__label" data-required="true">
+													<span class="f-12 f-w-6">Reservation title</span>
+													<input type="text" class="form-input" name="reservation_title" placeholder="Enter reservation title" required/>
+												</label>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="form-input__wrap">
+												<label class="form-input__label" data-required="true">
+													<span class="f-12 f-w-6">Reservation rating</span>
+													<input type="number" class="form-input" name="reservation_rating" placeholder="Rating ranges from 1 - 5" required/>
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="input-group-wrap">
+										<div class="input-wrap">
+											<div class="form-input__wrap">
+												<label class="form-input__label" data-required="true">
+													<span class="f-12 f-w-6">Reservation location</span>
+													<input type="text" class="form-input" name="reservation_location" placeholder="Enter reservation location" required/>
+												</label>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="form-input__wrap">
+												<label class="form-input__label" data-required="true">
+													<span class="f-12 f-w-6">Reservation cost</span>
+													<input type="number" class="form-input" name="reservation_cost" placeholder="Enter reservation cost" required/>
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="input-group-wrap">
+										<div class="input-wrap">
+											<div class="form-input__wrap">
+												<label class="form-input__label">
+													<span class="f-12 f-w-6">From date</span>
+													<input type="date" class="form-input" name="from_date" />
+												</label>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="form-input__wrap">
+												<label class="form-input__label">
+													<span class="f-12 f-w-6">To date</span>
+													<input type="date" class="form-input" name="to_date" />
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="input-wrap">
+										<div class="form-input__wrap">
+											<label class="form-input__label" data-required="true">
+												<span class="f-12 f-w-6">Reservation description</span>
+												<textarea name="reservation_desc" id="reservationDesc" class="form-input" cols="30" rows="20" placeholder="Enter reservation description" style="height: 150px; font-size: 14px;" required>{"general":["Air Conditioned","Refrigerator","Microwave","Hair Dryer"],"activities":["Swimming Pool","Garden","Microwave","Pool Outdoor"],"Internet":["Free Wi-Fi","4G Speed"],"Services":["Luggage Storage","Self Laundry"]}</textarea>
+											</label>
+										</div>
+										<div class="flex justify-e">
+											<a href="javascript:void(0);" class="f-12" style="text-decoration: underline;" onclick="resetDescTemp(event)">Reset Template</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-foot flex justify-e align-c">
+							<div class="btn-wrap" style="margin: 0;">
+								<button type="submit" class="btn primary flex align-c" disabled>
+									<span class="p-lr-5">Create</span>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="/static/reservations.chunk.js"></script>
+	</body>
+</html>

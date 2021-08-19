@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Setting | Novotel</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+		<link rel="manifest" href="/assets/favicons/site.webmanifest">
+		<meta name="theme-color" content="#202962">
+        <link rel="stylesheet" href="/static/setting.chunk.css" />
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"> -->
+		<noscript>
+			<div class="no-script">
+				<p>
+					You appear to be using an outdated browser, or javascript is
+					disabled in your browser. Please upgrade to a modern browser or
+					enable javascript and refresh page.
+				</p>
+			</div>
+		</noscript>
+	</head>
+	<body>
+		<div class="content">
+			<%- include('./partials/nav.ejs'); %>
+			<%- include('./partials/sidebar.ejs'); %>
+			<section id="main-con">
+				<div class="main-con__wrap flex flex-col p-lr-10">
+					<div class="main-con__head"></div>
+					<div class="main-con__content">
+						<div class="box-hol">
+							<div class="box b-rad-5 p-lr-10 p-tb-20">
+								<div class="f-w-6 f-16 text-c">Edit Account</div>
+								<div class="flex align-c justify-c" style="padding: 40px 20px">
+									<button id="account" class="btn primary text-cap flex align-c" style="padding: 5px 20px">
+										<span class="icon stroke-light">
+											<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+												<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+												<path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+												<path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+												<line x1="16" y1="5" x2="19" y2="8" />
+											</svg>
+										</span>
+										<span class="m-l-5">Edit</span>
+									</button>
+									<div id="accountModal" class="modal dark">
+										<div class="modal-content b-rad-5 b-s-high">
+											<form id="accountForm" action="/s/account" method="POST">
+												<div class="modal-head flex justify-b">
+													<h1 class="flex flex-col justify-c f-14">Edit Account</h1>
+													<div class="flex align-c">
+														<div class="btn-wrap" style="margin: 0 10px 0 0;">
+															<button type="submit" class="btn primary flex align-c head__foot__btn" disabled>
+																<span class="p-lr-5">Save</span>
+															</button>
+														</div>
+														<button type="button" id="closeAccount" class="icon stroke" title="Close" style="width: 25px; height: 25px; background-color: transparent; border: none">
+															<svg xmlns="http://www.w3.org/2000/svg" style="stroke-width: 2.0;" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+																<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+																<line x1="18" y1="6" x2="6" y2="18" />
+																<line x1="6" y1="6" x2="18" y2="18" />
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="modal-body custom-scroll">
+													<div class="modal-body__content flex justify-c">
+														<div class="form-body">
+															<div class="input-group-wrap">
+																<div class="input-wrap">
+																	<div class="form-input__wrap">
+																		<label class="form-input__label" data-required="true">
+																			<span>First name</span>
+																			<input type="text" class="form-input text-cap" name="first_name" placeholder="First name" value="<%=userData.first_name%>" required/>
+																		</label>
+																	</div>
+																</div>
+																<div class="input-wrap">
+																	<div class="form-input__wrap">
+																		<label class="form-input__label" data-required="true">
+																			<span>Last name</span>
+																			<input type="text" class="form-input text-cap" name="last_name" placeholder="Last name" value="<%=userData.last_name%>" required/>
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="input-group-wrap">
+																<div class="input-wrap">
+																	<div class="form-input__wrap">
+																		<label class="form-input__label" data-required="true">
+																			<span>Date of birth</span>
+																			<input type="date" class="form-input" name="dob" placeholder="Date of birth" value="<%=userData.dob%>" required/>
+																		</label>
+																	</div>
+																</div>
+																<div class="input-wrap">
+																	<div class="form-input__wrap">
+																		<label class="form-input__label" data-required="true">
+																			<span>Gender</span>
+																			<select class="form-input" name="gender" required>
+																				<option value="">Select gender</option>
+																				<option value="female"<%= userData.gender == 'female' ? ' selected' : '' %>>Female</option>
+																				<option value="male"<%= userData.gender == 'male' ? ' selected' : '' %>>Male</option>
+																			</select>
+																		</label>
+																	</div>
+																</div>
+															</div>
+															<div class="input-wrap">
+																<div class="form-input__wrap">
+																	<label class="form-input__label" data-required="true">
+																		<span>Email</span>
+																		<input type="email" class="form-input" name="email" placeholder="Email address" value="<%=userData.email%>" required/>
+																	</label>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="modal-foot flex justify-e align-c">
+													<div class="btn-wrap" style="margin: 0;">
+														<button type="submit" class="btn primary flex align-c" disabled>
+															<span class="p-lr-5">Save</span>
+														</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-hol">
+							<div class="box b-rad-5 p-lr-10 p-tb-20">
+								<div class="f-w-6 f-16 text-c">Change Password</div>
+								<div class="flex align-c justify-c" style="padding: 40px 20px">
+									<button id="changePassword" class="btn primary text-cap flex align-c" style="padding: 5px 20px">
+										<span class="icon stroke-light">
+											<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+												<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+												<rect x="5" y="11" width="14" height="10" rx="2" />
+												<circle cx="12" cy="16" r="1" />
+												<path d="M8 11v-4a4 4 0 0 1 8 0v4" />
+											</svg>
+										</span>
+										<span class="m-l-5">change</span>
+									</button>
+									<div id="changePasswordModal" class="modal dark">
+										<div class="modal-content b-rad-5 b-s-high">
+											<form id="changePasswordForm" action="/s/password" method="POST">
+												<div class="modal-head flex justify-b">
+													<h1 class="flex flex-col justify-c f-14">Change Password</h1>
+													<div class="flex align-c">
+														<div class="btn-wrap" style="margin: 0 10px 0 0;">
+															<button type="submit" class="btn primary flex align-c head__foot__btn" disabled>
+																<span class="p-lr-5">Change</span>
+															</button>
+														</div>
+														<button type="button" id="closeChangePassword" class="icon stroke" title="Close" style="width: 25px; height: 25px; background-color: transparent; border: none">
+															<svg xmlns="http://www.w3.org/2000/svg" style="stroke-width: 2.0;" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+																<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+																<line x1="18" y1="6" x2="6" y2="18" />
+																<line x1="6" y1="6" x2="18" y2="18" />
+															</svg>
+														</button>
+													</div>
+												</div>
+												<div class="modal-body custom-scroll">
+													<div class="modal-body__content flex justify-c">
+														<div class="form-body">
+															<div class="input-wrap">
+																<div class="form-input__wrap">
+																	<label class="form-input__label" data-required="true">
+																		<span>Current password</span>
+																		<input type="password" class="form-input" name="current_password" placeholder="Current password" required/>
+																	</label>
+																</div>
+															</div>
+															<div class="input-wrap">
+																<div class="form-input__wrap">
+																	<label class="form-input__label" data-required="true">
+																		<span>New password</span>
+																		<input type="password" class="form-input" style="padding-right: 30px" name="new_password" placeholder="New password" pattern="[A-Za-z\d@$!%*#?&]{6,20}" title="Password can only contain 6-20 letters, digits and $!%*#?&." jsswitch="text" required/>
+																		<span class="switch-action" onclick="_switch();">
+																			<svg class="show-icon" fill="#000000" height="24" view-box="0 0 24 24" width="24"
+																				xmlns="http://www.w3.org/2000/svg" data-hidden="true" focusable="false">
+																				<path
+																					d="M12,7c-2.48,0-4.5,2.02-4.5,4.5S9.52,16,12,16s4.5-2.02,4.5-4.5S14.48,7,12,7z M12,14.2c-1.49,0-2.7-1.21-2.7-2.7 c0-1.49,1.21-2.7,2.7-2.7s2.7,1.21,2.7,2.7C14.7,12.99,13.49,14.2,12,14.2z">
+																				</path>
+																				<path
+																					d="M12,4C7,4,2.73,7.11,1,11.5C2.73,15.89,7,19,12,19s9.27-3.11,11-7.5C21.27,7.11,17,4,12,4z M12,17 c-3.79,0-7.17-2.13-8.82-5.5C4.83,8.13,8.21,6,12,6s7.17,2.13,8.82,5.5C19.17,14.87,15.79,17,12,17z">
+																				</path>
+																			</svg>
+																			<svg class="hide-icon" fill="#000000" height="24" view-box="0 0 24 24" width="24"
+																				xmlns="http://www.w3.org/2000/svg" data-hidden="true" focusable="false">
+																				<path
+																					d="M10.58,7.25l1.56,1.56c1.38,0.07,2.47,1.17,2.54,2.54l1.56,1.56C16.4,12.47,16.5,12,16.5,11.5C16.5,9.02,14.48,7,12,7 C11.5,7,11.03,7.1,10.58,7.25z">
+																				</path>
+																				<path
+																					d="M12,6c3.79,0,7.17,2.13,8.82,5.5c-0.64,1.32-1.56,2.44-2.66,3.33l1.42,1.42c1.51-1.26,2.7-2.89,3.43-4.74 C21.27,7.11,17,4,12,4c-1.4,0-2.73,0.25-3.98,0.7L9.63,6.3C10.4,6.12,11.19,6,12,6z">
+																				</path>
+																				<path
+																					d="M16.43,15.93l-1.25-1.25l-1.27-1.27l-3.82-3.82L8.82,8.32L7.57,7.07L6.09,5.59L3.31,2.81L1.89,4.22l2.53,2.53 C2.92,8.02,1.73,9.64,1,11.5C2.73,15.89,7,19,12,19c1.4,0,2.73-0.25,3.98-0.7l4.3,4.3l1.41-1.41l-3.78-3.78L16.43,15.93z M11.86,14.19c-1.38-0.07-2.47-1.17-2.54-2.54L11.86,14.19z M12,17c-3.79,0-7.17-2.13-8.82-5.5c0.64-1.32,1.56-2.44,2.66-3.33 l1.91,1.91C7.6,10.53,7.5,11,7.5,11.5c0,2.48,2.02,4.5,4.5,4.5c0.5,0,0.97-0.1,1.42-0.25l0.95,0.95C13.6,16.88,12.81,17,12,17z">
+																				</path>
+																			</svg>
+																		</span>
+																	</label>
+																</div>
+															</div>
+															<div class="p-tb-20" style="padding-bottom: 0;">
+																<div class="f-16 text-c">
+																	<a href="javascript:void(0);" onclick="alert('Contact us at contact@novotel.com for account recovery.')">Forgot Password?</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="modal-foot flex justify-e align-c">
+													<div class="btn-wrap" style="margin: 0;">
+														<button type="submit" class="btn primary flex align-c" disabled>
+															<span class="p-lr-5">Change</span>
+														</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script src="/static/setting.chunk.js"></script>
+		<script>
+			window._switch=function(){var t=document.querySelector.bind(document)("input[name=new_password]"),e=t.type,i=t.getAttribute("jsswitch");t.setAttribute("jsswitch",e),t.type=i};
+		</script>
+	</body>
+</html>

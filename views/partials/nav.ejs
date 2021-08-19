@@ -1,0 +1,69 @@
+<nav id="navBar">
+    <div class="nav-bar__ctrl flex justify-b align-c">
+        <button type="button" class="toggle-menu icon stroke" style="background: transparent; border: none" aria-label="Toggle Menu">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                view-box="0 0 24 24"
+                stroke-width="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
+        </button>
+        <div class="flex align-c">
+            <ul class="flex align-c">
+                <li class="position-r" style="padding: 0;">
+                    <div class="icon" style="border: 1px solid var(--border-color);" data-dropdown="true" onclick="dropDown(event);" title="User">
+                        <img class="profile-image-img" src="/assets/media/icons/avatar.svg" alt="" />
+                    </div>
+                    <div class="drop-down b-rad-5 custom-scroll" aria-hidden="true">
+                        <ul class="p-tb-10">
+                            <li style="border-bottom: 1px solid var(--border-color);">
+                                <div class="p-10 flex align-c f-16">
+                                    <div class="icon" style="width: 50px; height: 50px; border: 1px solid var(--border-color);">
+                                        <img class="profile-image-img" src="/assets/media/icons/avatar.svg" alt="" />
+                                    </div>
+                                    <div class="m-l-10 f-12 text-break" style="max-width: calc(100% - 50px - 10px);">
+                                        <p class="text-cap f-w-6">
+                                            <%=userData.first_name%>&nbsp;<%=userData.last_name%>
+                                            <% if (userData.rank === 'admin') { %>
+                                            <span class="m-l-5 status success">Admin</span>
+                                            <% } %>
+                                        </p>
+                                        <p class="text-mute m-t-5"><%=userData.email%></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="hover-effect" style="border-bottom: 1px solid var(--border-color);">
+                                <a href="/logout" style=" text-decoration: none;color: #000000;font-size: 12px;">
+                                    <div class="p-lr-10 p-tb-5 flex align-c f-14 text-icon">
+                                        <div class="icon stroke">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                                                <path d="M7 12h14l-3 -3m0 6l3 -3" />
+                                            </svg>
+                                        </div>
+                                        <p class="m-l-10">Logout</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="p-t-5">
+                                <div class="p-lr-10 p-tb-5 flex justify-c align-c" style="font-size: 10px;">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

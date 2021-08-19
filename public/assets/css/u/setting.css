@@ -1,0 +1,20 @@
+#changePasswordModal.modal {
+    display: none;
+}
+#changePasswordModal .modal-body__content {
+    width: 445px;
+}
+#changePasswordModal .form-input-hint {
+    max-width: 70%;
+}
+#accountModal.modal {
+    display: none;
+}
+.input-wrap .form-input[jsswitch="text"] ~ .switch-action .hide-icon,
+.input-wrap .form-input[jsswitch="password"] ~ .switch-action .show-icon {
+    display: block;
+}
+.input-wrap .form-input[jsswitch="password"] ~ .switch-action .hide-icon,
+.input-wrap .form-input[jsswitch="text"] ~ .switch-action .show-icon {
+    display: none;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="grad-system">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Login into account - Reed E-LIbrary</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/assets/favicons/site.webmanifest">
+	<meta name="theme-color" content="#202962">
+	<link rel="stylesheet" href="/static/login.chunk.css" />
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"> -->
+</head>
+<body>
+	<div class="content flex">
+		<div class="main-panel p-tb-20 flex flex-col justify-c">
+			<form action="" method="post" class="m-b-20">
+				<div class="form b-s-low">
+					<div class="form-header  flex flex-col align-c">
+						<a href="/">
+                            <img class="me-3" src="/assets/media/images/novotel_logo_small.png" alt="Novotel Logo" />
+                        </a>
+						<h2 class="text-c m-t-20">Log In</h2>
+					</div>
+					<div class="form-body">
+						<% if(typeof notification != 'undefined'){ %>
+							<div class="inner-notification m-b-10">
+								<div class="inner-notification__content <%=notification.type%>">
+									<p><%=notification.msg%></p>
+								</div>
+							</div>
+						<% } %>
+						<div class="input-wrap">
+							<div class="form-input__wrap">
+								<label class="form-input__label">
+									<span>Email</span>
+									<input type="email" class="form-input" name="email" placeholder="Enter email" value="<%= typeof formData != 'undefined' ? formData.email : '' %>" required/>
+								</label>
+							</div>
+						</div>
+						<div class="input-wrap">
+							<div class="form-input__wrap">
+								<label class="form-input__label">
+									<span>Password</span>
+									<input type="password" class="form-input" name="password" placeholder="Enter password" required/>
+								</label>
+							</div>
+						</div>
+						<div class="flex justify-e m-t-10 position-r">
+							<a href="javascript:void(0);" onclick="alert('Contact us support@novotel.com for account recovery.')">Forgot Password?</a>
+						</div>
+						<div class="btn-wrap">
+							<button type="submit" class="btn primary w-100">
+								Log In
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="m-t-30">
+				<div class="text-mute text-c fw-600">Don't have an account?</div>
+				<div class="f-18 text-c">
+					<a href="/signup<%= typeof urlParams != 'undefined' ? urlParams : '' %>">Sign Up</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
