@@ -144,7 +144,7 @@ Route.use('/login', valLoginActive, async (req, res) => {
     if (req.method === 'POST') {
         let notification = {msg: 'Login failed, please try again.', type: 'error'};
         try {
-            const {dst = '/bookings'} = req.query;
+            const {dst = '/myBooking'} = req.query;
             const {email = null, password = null} = req.body;
             const valData = await UsersModel.verifyLogin(email, password);
             if (valData) {
@@ -180,7 +180,7 @@ Route.use('/signup', valLoginActive, async (req, res) => {
     if (req.method === 'POST') {
         let notification = {msg: 'Signup failed, please try again.', type: 'error'};
         try {
-            const {dst = '/bookings'} = req.query;
+            const {dst = '/myBooking'} = req.query;
             let {
                 first_name = null, 
                 last_name = null, 
